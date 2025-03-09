@@ -1,0 +1,148 @@
+import type { Emoji } from "./types"
+
+// This is a sample of emoji data
+// In a real application, you would have a more comprehensive list
+export const emojiData: Emoji[] = [
+  {
+    id: "1",
+    char: "😀",
+    name: "Grinning Face",
+    category: "smileys",
+    keywords: ["smile", "happy", "joy", "grin"],
+  },
+  {
+    id: "2",
+    char: "😂",
+    name: "Face with Tears of Joy",
+    category: "smileys",
+    keywords: ["laugh", "lol", "haha"],
+  },
+  {
+    id: "3",
+    char: "😍",
+    name: "Smiling Face with Heart-Eyes",
+    category: "smileys",
+    keywords: ["love", "heart", "adore"],
+  },
+  {
+    id: "4",
+    char: "🤔",
+    name: "Thinking Face",
+    category: "smileys",
+    keywords: ["think", "ponder", "hmm"],
+  },
+  {
+    id: "5",
+    char: "😎",
+    name: "Smiling Face with Sunglasses",
+    category: "smileys",
+    keywords: ["cool", "sunglasses", "awesome"],
+  },
+  {
+    id: "6",
+    char: "❤️",
+    name: "Red Heart",
+    category: "symbols",
+    keywords: ["heart", "love", "like"],
+  },
+  {
+    id: "7",
+    char: "👍",
+    name: "Thumbs Up",
+    category: "people",
+    keywords: ["thumbs", "up", "approve", "ok"],
+  },
+  {
+    id: "8",
+    char: "👏",
+    name: "Clapping Hands",
+    category: "people",
+    keywords: ["clap", "applause", "praise"],
+  },
+  {
+    id: "9",
+    char: "🎉",
+    name: "Party Popper",
+    category: "activities",
+    keywords: ["party", "celebration", "tada"],
+  },
+  {
+    id: "10",
+    char: "🌟",
+    name: "Glowing Star",
+    category: "symbols",
+    keywords: ["star", "glow", "shine"],
+  },
+  {
+    id: "11",
+    char: "🍕",
+    name: "Pizza",
+    category: "food",
+    keywords: ["pizza", "food", "slice"],
+  },
+  {
+    id: "12",
+    char: "🚀",
+    name: "Rocket",
+    category: "travel",
+    keywords: ["rocket", "space", "launch"],
+  },
+  {
+    id: "13",
+    char: "💻",
+    name: "Laptop",
+    category: "objects",
+    keywords: ["computer", "laptop", "work"],
+  },
+  {
+    id: "14",
+    char: "📱",
+    name: "Mobile Phone",
+    category: "objects",
+    keywords: ["phone", "mobile", "cell"],
+  },
+  {
+    id: "15",
+    char: "🐱",
+    name: "Cat Face",
+    category: "animals",
+    keywords: ["cat", "kitten", "pet"],
+  },
+  {
+    id: "16",
+    char: "🐶",
+    name: "Dog Face",
+    category: "animals",
+    keywords: ["dog", "puppy", "pet"],
+  },
+  {
+    id: "17",
+    char: "🌈",
+    name: "Rainbow",
+    category: "nature",
+    keywords: ["rainbow", "colors", "sky"],
+  },
+  {
+    id: "18",
+    char: "🔥",
+    name: "Fire",
+    category: "nature",
+    keywords: ["fire", "hot", "flame", "lit"],
+  },
+  {
+    id: "19",
+    char: "💯",
+    name: "Hundred Points",
+    category: "symbols",
+    keywords: ["100", "score", "perfect"],
+  },
+  {
+    id: "20",
+    char: "⭐",
+    name: "Star",
+    category: "symbols",
+    keywords: ["star", "favorite", "rating"],
+  },
+  // Add more emojis as needed
+]
+
