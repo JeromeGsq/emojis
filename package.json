@@ -10,7 +10,7 @@
     "lint": "next lint",
     "postbuild": "node fix-paths.js",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d out"
+    "deploy": "gh-pages -d out --add=false"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
