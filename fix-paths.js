@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Configuration
-const basePath = '/emoji-collection';
+const basePath = '/emojis';
 const outDir = './out';
 
 // Get all HTML files

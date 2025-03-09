@@ -23,9 +23,8 @@ const nextConfig = {
   },
   // GitHub Pages configuration
   output: 'export',
-  basePath: process.env.NODE_ENV === 'production' ? '/emoji-collection' : '',
-  assetPrefix:
-    process.env.NODE_ENV === 'production' ? '/emoji-collection/' : '',
+  basePath: process.env.NODE_ENV === 'production' ? '/emojis' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/emojis/' : '',
   trailingSlash: true,
 };
 
