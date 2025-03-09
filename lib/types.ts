@@ -1,15 +1,7 @@
 export interface Emoji {
   id: string;
   char: string;
-  name: {
-    en: string;
-    fr: string;
-  };
+  name: string;
   category: string;
-  keywords: {
-    en: string[];
-    fr: string[];
-  };
+  keywords: string[];
 }
-
-export type Language = 'en' | 'fr';

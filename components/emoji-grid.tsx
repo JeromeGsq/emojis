@@ -3,34 +3,43 @@
 import { useState } from 'react';
 import EmojiCard from './emoji-card';
 import type { Emoji } from '@/lib/types';
-import { useToast } from '@/hooks/use-toast';
-import { useLanguage } from '@/lib/language-context';
 
-export default function EmojiGrid({ emojis }: { emojis: Emoji[] }) {
-  const { toast } = useToast();
-  const { language } = useLanguage();
+interface Props {
+  emojis: Emoji[];
+}
+
+export default function EmojiGrid({ emojis }: Props) {
   const [copiedEmoji, setCopiedEmoji] = useState<string | null>(null);
+  const [notification, setNotification] = useState<{
+    visible: boolean;
+    emoji: string;
+    name: string;
+  }>({
+    visible: false,
+    emoji: '',
+    name: '',
+  });
 
-  const handleCopyEmoji = (emoji: string, name: { en: string; fr: string }) => {
+  const handleCopyEmoji = (emoji: string, name: string) => {
     navigator.clipboard
       .writeText(emoji)
       .then(() => {
         setCopiedEmoji(emoji);
-        toast({
-          title: 'Copied!',
-          description: `${name[language]} emoji copied to clipboard`,
-          duration: 2000,
+
+        // Afficher notre propre notification
+        setNotification({
+          visible: true,
+          emoji: emoji,
+          name: name,
         });
 
-        // Reset the copied state after a short delay
-        setTimeout(() => setCopiedEmoji(null), 1000);
+        // Masquer après 2 secondes
+        setTimeout(() => {
+          setNotification((prev) => ({ ...prev, visible: false }));
+          setCopiedEmoji(null);
+        }, 2000);
       })
       .catch((err) => {
-        toast({
-          title: 'Failed to copy',
-          description: 'Please try again',
-          variant: 'destructive',
-        });
         console.error('Failed to copy: ', err);
       });
   };
@@ -46,15 +55,30 @@ export default function EmojiGrid({ emojis }: { emojis: Emoji[] }) {
   }
 
   return (
-    <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4'>
-      {emojis.map((emoji) => (
-        <EmojiCard
-          key={emoji.id}
-          emoji={emoji}
-          isCopied={emoji.char === copiedEmoji}
-          onCopy={() => handleCopyEmoji(emoji.char, emoji.name)}
-        />
-      ))}
+    <div className='relative'>
+      {/* Notification personnalisée */}
+      {notification.visible && (
+        <div className='fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-black text-white py-2 px-4 rounded-lg shadow-lg flex items-center gap-2 animate-fade-in-up z-50'>
+          <span className='text-xl'>{notification.emoji}</span>
+          <div>
+            <p className='font-medium'>Copied!</p>
+            <p className='text-sm text-gray-300'>
+              {notification.name} emoji copied
+            </p>
+          </div>
+        </div>
+      )}
+
+      <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8 gap-4 justify-items-center'>
+        {emojis.map((emoji) => (
+          <EmojiCard
+            key={emoji.id}
+            emoji={emoji}
+            isCopied={emoji.char === copiedEmoji}
+            onCopy={() => handleCopyEmoji(emoji.char, emoji.name)}
+          />
+        ))}
+      </div>
     </div>
   );
 }

@@ -2,7 +2,6 @@
 
 import type { Emoji } from '@/lib/types';
 import { Check, Copy } from 'lucide-react';
-import { useLanguage } from '@/lib/language-context';
 
 interface EmojiCardProps {
   emoji: Emoji;
@@ -11,16 +10,18 @@ interface EmojiCardProps {
 }
 
 export default function EmojiCard({ emoji, isCopied, onCopy }: EmojiCardProps) {
-  const { language } = useLanguage();
-
   return (
     <div
-      className='bg-card border rounded-lg p-4 flex flex-col items-center justify-center hover:shadow-md transition-shadow cursor-pointer group relative'
+      className='bg-card border rounded-lg p-5 flex flex-col items-center justify-center hover:shadow-md transition-shadow cursor-pointer group relative w-28 h-28 aspect-square'
       onClick={onCopy}
     >
-      <div className='text-4xl mb-2'>{emoji.char}</div>
-      <div className='text-xs text-center font-medium truncate w-full'>
-        {emoji.name[language]}
+      <div className='text-5xl flex items-center justify-center flex-1'>
+        {emoji.char}
+      </div>
+
+      {/* Tooltip qui apparaît au survol */}
+      <div className='absolute left-0 right-0 bottom-0 bg-black/75 text-white py-2 px-3 rounded-b-lg opacity-0 group-hover:opacity-100 transition-opacity text-xs text-center font-medium w-full overflow-hidden line-clamp-2'>
+        {emoji.name}
       </div>
 
       {/* Copy indicator */}
