@@ -8,6 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "postbuild": "node fix-paths.js",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d out"
   },
